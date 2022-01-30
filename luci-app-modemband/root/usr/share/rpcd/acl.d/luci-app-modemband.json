@@ -1,0 +1,20 @@
+{
+	"luci-app-modemband": {
+		"description": "Grant access to LuCI app modemband",
+		"read": {
+   			"cgi-io": [ "exec" ],
+    			"file": {
+				"/usr/bin/modemband.sh": [ "exec" ],
+				"/etc/modemband": [ "read" ]
+			},
+			"uci": [ "modemband", "luci-app-modemband" ]
+		},
+		"write": {
+			"file": {
+				"/etc/modemband": [ "write" ]
+			},
+			"uci": [ "modemband", "luci-app-modemband" ]
+		}
+	}
+}
+

@@ -1,0 +1,3 @@
+config modemband
+	option set_bands '1,3,7'
+	option sv_bands '1'

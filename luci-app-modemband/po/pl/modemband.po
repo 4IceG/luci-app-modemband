@@ -1,0 +1,41 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Preferred LTE Bands"
+msgstr "Preferowane pasma LTE"
+
+msgid "LTE bands:"
+msgstr "Ustawione pasma LTE:"
+
+msgid "Supported LTE bands:"
+msgstr "Obsługiwane pasma LTE:"
+
+msgid "Configuration modem frequency bands. More information about the modemband application on the"
+msgstr "Konfiguracja preferowanych pasm modemu. Więcej informacji na temat aplikacji modemband na"
+
+msgid "Configure modem bands"
+msgstr "Konfiguracja pasm LTE"
+
+msgid "Preferred bands settings"
+msgstr "Ustawienia preferowanych pasm"
+
+msgid "Currently selected bands:"
+msgstr "Aktualnie wybrane pasma:"
+
+msgid "Select the preferred band(s) for the modem."
+msgstr "Wybierz preferowane pasmo(-a) dla modemu."
+
+msgid "Modem information"
+msgstr "Informacje o modemie"
+
+msgid "eko.one.pl forum"
+msgstr "forum eko.one.pl"
+
+msgid "The new bands settings have been sent to the modem. If the changes are not visible please restart the modem."
+msgstr "Nowe ustawienia zostały przesłane do modemu. Zrestartuj modem jeśli zmiany nie są widoczne."
+
+msgid "Apply changes to bands"
+msgstr "Zastosuj zmiany w pasmach"
+
+msgid "Please select a band"
+msgstr "Proszę wybrać pasmo"

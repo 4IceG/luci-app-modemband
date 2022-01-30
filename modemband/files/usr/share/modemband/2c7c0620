@@ -1,0 +1,27 @@
+_DEVICE=/dev/ttyUSB2
+_DEFAULT_LTE_BANDS="1 2 3 4 5 7 8 12 13 14 18 19 20 25 26 28 29 30 32 38 39 40 41 42 46 48 66"
+
+getinfo() {
+	echo "Quectel EM160R-GL"
+}
+
+getsupportedbands() {
+	echo "${_DEFAULT_LTE_BANDS:-Unsupported}"
+}
+
+getbands() {
+	O=$(sms_tool -d $_DEVICE at "AT+QNWPREFCFG=\"lte_band\"?") 
+	MA=$(echo $O | cut -d ',' -f2)
+	MB=$(echo $MA | tr ':' ' ')
+	NUMB=$(echo $MB | xargs)
+	numtobands "$NUMB"
+}
+
+setbands() {
+	BANDS="$1"
+	[ "x$BANDS" = "xdefault" ] && BANDS="$_DEFAULT_LTE_BANDS"
+	[ -z "$BANDS" ] && return
+
+	BN=$(bandstonum "$BANDS")
+	[ "$BN" != "0" ] && sms_tool -d $_DEVICE at "AT+QNWPREFCFG=\"lte_band\",$BN"
+}

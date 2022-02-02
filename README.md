@@ -9,4 +9,4 @@ Luci-app-modemband is a GUI for https://eko.one.pl/?p=openwrt-modemband. A progr
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="32"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="32"> Podgląd
 
-![](https://github.com/4IceG/Personal_data/blob/master/gui%20modemband%20en.JPG?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/new%20app.JPG?raw=true)

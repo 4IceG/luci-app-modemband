@@ -122,11 +122,10 @@ return view.extend({
 
 		var json = JSON.parse(mData);
 		var modem = json.modem;
-		var modemen, sbands, mmm;
+		var modemen, sbands;
 		for (var i = 0; i < json.enabled.length; i++) 
 			{
 				modemen += 'B' + json.enabled[i] + '  ';
-				mmm += json.enabled[i];
 				modemen = modemen.replace('undefined', '');
 		}
 

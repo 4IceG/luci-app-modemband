@@ -11,7 +11,7 @@ msgid "Supported LTE bands:"
 msgstr "Obsługiwane pasma LTE:"
 
 msgid "Configuration modem frequency bands. More information about the modemband application on the"
-msgstr "Konfiguracja preferowanych pasm modemu. Więcej informacji na temat aplikacji modemband na"
+msgstr "Konfiguracja preferowanych pasm modemu. Więcej informacji o aplikacji modemband na"
 
 msgid "Configure modem bands"
 msgstr "Konfiguracja pasm LTE"
@@ -19,11 +19,8 @@ msgstr "Konfiguracja pasm LTE"
 msgid "Preferred bands settings"
 msgstr "Ustawienia preferowanych pasm"
 
-msgid "Currently selected bands:"
-msgstr "Aktualnie wybrane pasma:"
-
-msgid "Select the preferred band(s) for the modem."
-msgstr "Wybierz preferowane pasmo(-a) dla modemu."
+msgid "Modification of the bands:"
+msgstr "Modyfikacja pasm:"
 
 msgid "Modem information"
 msgstr "Informacje o modemie"
@@ -34,8 +31,30 @@ msgstr "forum eko.one.pl"
 msgid "The new bands settings have been sent to the modem. If the changes are not visible please restart the modem."
 msgstr "Nowe ustawienia zostały przesłane do modemu. Zrestartuj modem jeśli zmiany nie są widoczne."
 
-msgid "Apply changes to bands"
-msgstr "Zastosuj zmiany w pasmach"
+msgid "Apply changes"
+msgstr "Zastosuj zmiany"
+
+msgid "Restore"
+msgstr "Przywróc"
 
 msgid "Please select a band"
 msgstr "Proszę wybrać pasmo"
+
+msgid "Bands configuration"
+msgstr "Konfiguracja pasm"
+
+msgid "Restore default bands"
+msgstr "Przywróć domyślne pasma"
+
+msgid "Waiting for device..."
+msgstr "Oczekiwanie na urządzenie..."
+
+msgid ""
+"Select the preferred band(s) for the modem. <br /> Remember "
+"to save the configuration of the bands before sending to the modem."
+msgstr ""
+"Wybierz preferowane pasmo(-a) dla modemu. <br /> Pamiętaj "
+"aby zapisać wykonaną konfigurację pasm przed wysłaniem do modemu."
+
+msgid "Do you really want to set up all possible bands for the modem?"
+msgstr "Czy na pewno chcesz ustawić wszystkie możliwe pasma dla modemu?"

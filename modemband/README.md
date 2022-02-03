@@ -8,6 +8,7 @@ Supported devices:
 - Quectel EG06-E
 - Quectel EM160R-GL
 - Quectel EP06-E
+- Quectel RG502Q-EA
 - ZTE MF286
 - ZTE MF286D
 

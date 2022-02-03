@@ -7,7 +7,7 @@ PKG_NAME:=luci-app-modemband
 LUCI_TITLE:=LuCI panel for modemband
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+sms-tool +modemband
-PKG_VERSION:=1.0.2-20220202
+PKG_VERSION:=1.0.3-20220203
 PKG_RELEASE:=1
 
 include $(TOPDIR)/feeds/luci/luci.mk
@@ -16,6 +16,7 @@ define Package/luci-app-modemband/postinst
 #!/bin/sh
 rm -rf /tmp/luci-indexcache
 rm -rf /tmp/luci-modulecache/
+/sbin/set_up_bandz.sh
 exit 0
 endef
 

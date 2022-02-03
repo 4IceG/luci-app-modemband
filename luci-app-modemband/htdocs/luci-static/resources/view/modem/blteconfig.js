@@ -157,11 +157,10 @@ return view.extend({
 				}
 				else {
 				var view = document.getElementById("modemlteb");
-				view.textContent = _('Waiting for device...');
-					//ui.showModal(_(''), [
-					//E('p', { 'class': 'spinning' }, _('Waiting for device...'))
-					//]);
-					//}
+				view.innerHTML = _('Waiting for device...');
+				//L.ui.showModal(_(''), [
+				//E('p', { 'class': 'spinning' }, _('Waiting for device...'))
+				//]);
 				}
 
 			});

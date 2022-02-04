@@ -35,7 +35,8 @@ sms-tool modemband
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="32"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="32"> Podgląd
 
-![](https://github.com/4IceG/Personal_data/blob/master/new%20app.JPG?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/modemband.gif?raw=true)
+
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="32"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="32"> Podziękowania dla
 - [obsy (Cezary Jackiewicz)](https://github.com/obsy)

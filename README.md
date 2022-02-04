@@ -28,8 +28,8 @@ sms-tool modemband
 
 #How to use the package for LuCI?
 1. Select the bands from the drop-down menu.
-2. Click "Save & Apply"
-3. Click "Apply Changes"
+2. Click "Save & Apply".
+3. Click "Apply Changes".
 
 ```
 

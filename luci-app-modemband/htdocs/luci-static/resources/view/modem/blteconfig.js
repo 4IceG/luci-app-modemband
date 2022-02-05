@@ -139,18 +139,19 @@ return view.extend({
 			return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']))
 			.then(function(res) {
 				var json = JSON.parse(res);
-
-				if ( json.enabled.length != null ) { 
+				modemen = _('Waiting for device...');
+				if ( mData != null ) { 
 
 				var renderHTML = "";
 				//var strongband = "<span style=\"font-weight:bold;\">%s%s</span>";		
 
 				var view = document.getElementById("modemlteb");
-				view.innerHTML  = ' ';
+				view.innerHTML = modemen;
 				for (var i = 0; i < json.enabled.length; i++) 
 				{
 				//renderHTML += 'B' + String.format(strongband, _(""), _(json.enabled[i]))+'  ';
 				renderHTML += 'B' +json.enabled[i] + '  ';
+				view.innerHTML  = ' ';
   				view.innerHTML  = renderHTML;
 				}
 

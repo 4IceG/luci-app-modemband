@@ -139,7 +139,7 @@ return view.extend({
 			return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']))
 			.then(function(res) {
 				var json = JSON.parse(res);
-				modemen = _('Waiting for device...');
+				//modemen = _('Waiting for device...');
 				if ( mData != null ) { 
 
 				var renderHTML = "";

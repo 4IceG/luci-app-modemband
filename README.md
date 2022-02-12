@@ -17,6 +17,7 @@ Supported devices:
 - Quectel EP06-E
 - Quectel RG502Q-EA
 - ZTE MF286
+- ZTE MF286A
 - ZTE MF286D
 
 ``` bash

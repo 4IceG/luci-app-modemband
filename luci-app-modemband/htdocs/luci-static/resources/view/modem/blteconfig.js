@@ -9,6 +9,7 @@
 
 /*
 	Copyright 2022 Rafał Wabik - IceG - From eko.one.pl forum
+
 */
 
 var BANDmagic = form.DummyValue.extend({
@@ -62,6 +63,59 @@ var BANDmagic = form.DummyValue.extend({
 	}
 });
 
+var SYSTmagic = form.DummyValue.extend({
+
+	load: function() {
+		var restartButton = E('button', {
+				'class': 'btn cbi-button cbi-button-neutral',
+				'click': ui.createHandlerFn(this, function() {
+							return handleAction('restartwan');
+						}),
+			}, _('Restart'));
+
+		//cbi-button cbi-button-action important
+
+		var rebootButton = E('button', {
+				'class': 'btn cbi-button cbi-button-neutral',
+				'click': ui.createHandlerFn(this, function() {
+							return handleAction('rebootdev');
+						}),
+
+			}, _('Perform reboot'));
+
+		return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh'), 'null').then(L.bind(function(html) {
+				if (html == null) {
+					this.default = E('em', {}, [ _('The modemband error.') ]);
+				}
+				else {
+					this.default = E([
+					E('div', { 'class': 'cbi-value' }, [
+						E('label', { 'class': 'cbi-value-title' },
+							_('Restart WAN')
+						),
+						E('div', { 'class': 'cbi-value-field', 'style': 'width:25vw' },
+								E('div', { 'class': 'cbi-section-node' }, [
+									restartButton,
+								]),
+						),
+					]),
+					E('div', { 'class': 'cbi-value' }, [
+						E('label', { 'class': 'cbi-value-title' },
+							_('Reboot')
+						),
+						E('div', { 'class': 'cbi-value-field', 'style': 'width:25vw' },
+								E('div', { 'class': 'cbi-section-node' }, [
+									rebootButton,
+								]),
+						),
+					]),
+
+				]);
+					}
+			}, this));
+	}
+});
+
 var cbiRichListValue = form.ListValue.extend({
 	renderWidget: function(section_id, option_index, cfgvalue) {
 		var choices = this.transformChoices();
@@ -100,14 +154,25 @@ function handleAction(ev) {
 		var nb = L.toArray(uci.get('modemband', '@modemband[0]', 'set_bands')).join(',');
 		nb = nb.replace(/,/g, ' ')
 		fs.exec_direct('/usr/bin/modemband.sh', [ 'setbands', nb ]);
-		ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible please restart the modem.') ), 'info');
+		ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.') ), 'info');
 	}
 	if (ev === 'resetbandz') {		
 		if (confirm(_('Do you really want to set up all possible bands for the modem?')))
 			{
 			fs.exec_direct('/usr/bin/modemband.sh', [ 'setbands', 'default' ]);
-			ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible please restart the modem.')), 'info');
+			ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.')), 'info');
 			}
+	}
+	if (ev === 'rebootdev') {
+			L.ui.showModal(_('Rebooting…'), [
+				E('p', { 'class': 'spinning' }, _('Waiting for device...'))
+			]);
+			fs.exec('/sbin/reboot');
+	}
+	if (ev === 'restartwan') {
+			fs.exec('/sbin/ifdown', ['wan']);
+			fs.exec('sleep 3');
+			fs.exec('/sbin/ifup', ['wan']);
 	}
 }
 
@@ -123,13 +188,13 @@ return view.extend({
 		var modem = json.modem;
 		var modemen, sbands;
 		for (var i = 0; i < json.enabled.length; i++) 
-			{
+		{
 				modemen += 'B' + json.enabled[i] + '  ';
 				modemen = modemen.replace('undefined', '');
 		}
 
 		for (var i = 0; i < json.supported.length; i++) 
-			{
+		{
 				sbands += 'B' + json.supported[i].band + '  ';
 				sbands = sbands.replace('undefined', '');
 		}
@@ -201,13 +266,13 @@ return view.extend({
 		s.addremove = false;
 
 		s.tab('bandset', _('Preferred bands settings'));
+		s.tab('aoptions', _('Additional options'));
  
 		o = s.taboption('bandset', cbiRichListValue, 'set_bands',
 		_('Modification of the bands:'), 
 		_("Select the preferred band(s) for the modem. <br /> \
 		Remember to save the configuration of the bands before sending to the modem."));
 
-		//Add bands data
 		for (var i = 0; i < json.supported.length; i++) 
 		{
 			o.value(json.supported[i].band, _('B')+json.supported[i].band,json.supported[i].txt);
@@ -229,6 +294,11 @@ return view.extend({
 		s.anonymous = true;
 		o = s.option(BANDmagic);
 
+		s = m.section(form.TypedSection);
+		s.tab('aoptions', _('Additional options'));
+
+		s.anonymous = true;
+		o = s.taboption('aoptions', SYSTmagic);
 
 		return m.render();
 	},

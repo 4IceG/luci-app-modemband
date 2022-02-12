@@ -28,8 +28,8 @@ msgstr "Informacje o modemie"
 msgid "eko.one.pl forum"
 msgstr "forum eko.one.pl"
 
-msgid "The new bands settings have been sent to the modem. If the changes are not visible please restart the modem."
-msgstr "Nowe ustawienia zostały przesłane do modemu. Zrestartuj modem jeśli zmiany nie są widoczne."
+msgid "The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required."
+msgstr "Nowe ustawienia pasm zostały wysłane do modemu. Jeśli zmiany nie są widoczne, może być wymagane ponowne uruchomienie połączenia, modemu lub routera."
 
 msgid "Apply changes"
 msgstr "Zastosuj zmiany"
@@ -48,6 +48,24 @@ msgstr "Przywróć domyślne pasma"
 
 msgid "Waiting for device..."
 msgstr "Oczekiwanie na urządzenie..."
+
+msgid "Rebooting…"
+msgstr "Ponowne uruchamianie…"
+
+msgid "Perform reboot"
+msgstr "Wykonaj restart"
+
+msgid "Restart"
+msgstr "Restart połączenia"
+
+msgid "Reboot"
+msgstr "Restart urządzenia"
+
+msgid "Restart WAN"
+msgstr ""
+
+msgid "Additional options"
+msgstr "Dodatkowe opcje"
 
 msgid ""
 "Select the preferred band(s) for the modem. <br /> Remember "

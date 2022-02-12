@@ -37,8 +37,8 @@ msgstr "Zastosuj zmiany"
 msgid "Restore"
 msgstr "Przywróc"
 
-msgid "Please select a band"
-msgstr "Proszę wybrać pasmo"
+msgid "Please select a band(s)"
+msgstr "Proszę wybrać pasmo(-a)"
 
 msgid "Bands configuration"
 msgstr "Konfiguracja pasm"

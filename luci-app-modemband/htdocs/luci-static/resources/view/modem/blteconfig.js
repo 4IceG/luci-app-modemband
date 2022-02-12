@@ -101,8 +101,7 @@ function handleAction(ev) {
 		nb = nb.replace(/,/g, ' ')
 		fs.exec_direct('/usr/bin/modemband.sh', [ 'setbands', nb ]);
 		ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible please restart the modem.') ), 'info');
-
-		}
+	}
 	if (ev === 'resetbandz') {		
 		if (confirm(_('Do you really want to set up all possible bands for the modem?')))
 			{
@@ -151,7 +150,7 @@ return view.extend({
 				{
 				//renderHTML += 'B' + String.format(strongband, _(""), _(json.enabled[i]))+'  ';
 				renderHTML += 'B' +json.enabled[i] + '  ';
-				view.innerHTML  = ' ';
+				view.innerHTML  = '';
   				view.innerHTML  = renderHTML;
 				}
 
@@ -215,8 +214,7 @@ return view.extend({
 		}
 
 		o.multiple = true;
-		o.select_placeholder = _('none');
-		o.placeholder = _('Please select a band');
+		o.placeholder = _('Please select a band(s)');
 		o.cfgvalue = function(section_id) {
 			return L.toArray(uci.get('modemband', section_id, 'set_bands')).join(',').split(/[ \t,]+/);
 		};

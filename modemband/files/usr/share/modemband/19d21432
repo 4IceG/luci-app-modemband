@@ -1,8 +1,18 @@
 _DEVICE=/dev/ttyUSB1
-_DEFAULT_LTE_BANDS="1 3 7 8 20 28"
+
+case $(cat /tmp/sysinfo/board_name) in
+"zte,mf286")
+	_DEFAULT_LTE_BANDS="1 3 7 8 20 28"
+	_NAME="ZTE MF286"
+	;;
+"zte,mf286a")
+	_DEFAULT_LTE_BANDS="1 2 3 5 7 8 20 38"
+	_NAME="ZTE MF286A"
+	;;
+esac
 
 getinfo() {
-	echo "ZTE MF286"
+	echo "$_NAME"
 }
 
 getsupportedbands() {

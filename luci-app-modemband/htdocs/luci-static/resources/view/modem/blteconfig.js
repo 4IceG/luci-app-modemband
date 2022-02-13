@@ -271,7 +271,8 @@ return view.extend({
 		o = s.taboption('bandset', cbiRichListValue, 'set_bands',
 		_('Modification of the bands:'), 
 		_("Select the preferred band(s) for the modem. <br /> \
-		Remember to save the configuration of the bands before sending to the modem."));
+		How to set the bands in LuCI? <br /> \
+		1. Select band(s) 2. Click 'Save and apply' 3. Click 'Apply changes'."));
 
 		for (var i = 0; i < json.supported.length; i++) 
 		{

@@ -61,8 +61,8 @@ msgstr "Restart połączenia"
 msgid "Reboot"
 msgstr "Restart urządzenia"
 
-msgid "Restart WAN"
-msgstr ""
+msgid "Do you really want to restart the device?"
+msgstr "Czy na pewno chcesz wykonać restart urządzenia?"
 
 msgid "Additional options"
 msgstr "Dodatkowe opcje"

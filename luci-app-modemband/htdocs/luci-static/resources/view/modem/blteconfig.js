@@ -16,14 +16,14 @@ var BANDmagic = form.DummyValue.extend({
 
 	load: function() {
 		var setupButton = E('button', {
-				'class': 'btn cbi-button cbi-button-apply',
+				'class': 'cbi-button cbi-button-action important',
 				'click': ui.createHandlerFn(this, function() {
 							return handleAction('setbandz');
 						}),
 			}, _('Apply changes'));
 
 		var restoreButton = E('button', {
-				'class': 'cbi-button cbi-button-reset',
+				'class': 'btn cbi-button cbi-button-reset',
 				'click': ui.createHandlerFn(this, function() {
 							return handleAction('resetbandz');
 						}),
@@ -72,8 +72,6 @@ var SYSTmagic = form.DummyValue.extend({
 							return handleAction('restartwan');
 						}),
 			}, _('Restart'));
-
-		//cbi-button cbi-button-action important
 
 		var rebootButton = E('button', {
 				'class': 'btn cbi-button cbi-button-neutral',
@@ -164,10 +162,13 @@ function handleAction(ev) {
 			}
 	}
 	if (ev === 'rebootdev') {
+		if (confirm(_('Do you really want to restart the device?')))
+		{
 			L.ui.showModal(_('Rebooting…'), [
 				E('p', { 'class': 'spinning' }, _('Waiting for device...'))
 			]);
 			fs.exec('/sbin/reboot');
+		}
 	}
 	if (ev === 'restartwan') {
 			fs.exec('/sbin/ifdown', ['wan']);

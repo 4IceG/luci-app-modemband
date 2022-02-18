@@ -13,6 +13,7 @@ Supported devices:
 - Quectel EC20
 - Quectel EC25
 - Quectel EG06-E
+- Quectel EM12-G
 - Quectel EM160R-GL
 - Quectel EP06-E
 - Quectel RG502Q-EA

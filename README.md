@@ -9,7 +9,7 @@ Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A pr
 
 Supported devices:
 - BroadMobi BM806U
-- Huawei E3272/E3276/E3372
+- HHuawei E3272/E3276/E3372 in serial mode
 - Quectel EC20
 - Quectel EC25
 - Quectel EG06-E
@@ -17,16 +17,17 @@ Supported devices:
 - Quectel EM160R-GL
 - Quectel EP06-E
 - Quectel RG502Q-EA
-- ZTE MF286
-- ZTE MF286A
-- ZTE MF286D
+- ZTE MF286 (router)
+- ZTE MF286A (router)
+- ZTE MF286D (router)
+- ZTE MF286R (router)
 
 ``` bash
 #Modem drivers are required for proper operation.
 kmod-usb-serial kmod-usb-serial-option
 
 #+DEPENDS:
-sms-tool modemband
+sms-tool_2021-12-03-d38898f4-1 modemband_20220220
 
 #How to use the package for LuCI?
 1. Select the bands from the drop-down menu.

@@ -6,12 +6,14 @@ Supported devices:
 - Quectel EC20
 - Quectel EC25
 - Quectel EG06-E
+- Quectel EM12-G
 - Quectel EM160R-GL
 - Quectel EP06-E
 - Quectel RG502Q-EA
-- ZTE MF286
-- ZTE MF286A
-- ZTE MF286D
+- ZTE MF286 (router)
+- ZTE MF286A (router)
+- ZTE MF286D (router)
+- ZTE MF286R (router)
 
 ```
 root@MiFi:~# modemband.sh help

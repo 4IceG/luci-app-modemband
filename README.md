@@ -9,7 +9,7 @@ Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A pr
 
 Supported devices:
 - BroadMobi BM806U
-- HHuawei E3272/E3276/E3372 in serial mode
+- Huawei E3272/E3276/E3372 in serial mode
 - Quectel EC20
 - Quectel EC25
 - Quectel EG06-E

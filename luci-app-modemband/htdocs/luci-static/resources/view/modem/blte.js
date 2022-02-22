@@ -273,8 +273,6 @@ return view.extend({
 		_('Modification of the bands:'), 
 		_("Select the preferred band(s) for the modem."));
 
-		o.default ='1';
-
 		for (var i = 0; i < json.supported.length; i++) 
 		{
 			o.value(json.supported[i].band, _('B')+json.supported[i].band,json.supported[i].txt);
@@ -305,17 +303,12 @@ return view.extend({
 		    data = this.formdata;
 
 		return dom.callClassMethod(map, 'save').then(function() {
-
 			var args = [];
 			args.push(data.modemband.set_bands);
-
 			var ax = args.toString();
-
 			ax = ax.replace(/,/g, ' ')
 			fs.exec_direct('/usr/bin/modemband.sh', [ 'setbands', ax ]);
-
 			ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.') ), 'info');
-
 		});
 	},
 

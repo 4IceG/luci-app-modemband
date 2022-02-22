@@ -61,20 +61,17 @@ msgstr "Restart połączenia"
 msgid "Reboot"
 msgstr "Restart urządzenia"
 
+msgid "Refresh"
+msgstr "Odśwież"
+
 msgid "Do you really want to restart the device?"
 msgstr "Czy na pewno chcesz wykonać restart urządzenia?"
 
 msgid "Additional options"
 msgstr "Dodatkowe opcje"
 
-msgid ""
-"Select the preferred band(s) for the modem. <br /> How "
-"to set the bands in LuCI? <br /> 1. Select "
-"band(s) 2. Click 'Save and apply' 3. Click 'Apply changes'."
-msgstr ""
-"Wybierz preferowane pasmo(-a) dla modemu. <br /> Jak "
-"ustawić pasmo(-a) w LuCI? <br /> 1. Wybierz "
-"pasmo(-a) 2. Kliknij 'Zapisz i zastosuj' 3. Kliknij 'Zastosuj zmiany'."
+msgid "Select the preferred band(s) for the modem."
+msgstr "Wybierz preferowane pasmo(-a) dla modemu."
 
 msgid "Do you really want to set up all possible bands for the modem?"
 msgstr "Czy na pewno chcesz ustawić wszystkie możliwe pasma dla modemu?"

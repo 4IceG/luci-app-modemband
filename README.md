@@ -29,16 +29,11 @@ kmod-usb-serial kmod-usb-serial-option
 #+DEPENDS:
 sms-tool_2021-12-03-d38898f4-1 modemband_20220220
 
-#How to use the package for LuCI?
-1. Select the bands from the drop-down menu.
-2. Click "Save & Apply".
-3. Click "Apply Changes".
-
 ```
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="32"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="32"> Podgląd
 
-![](https://github.com/4IceG/Personal_data/blob/master/modemband.gif?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/modembandgui.gif?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="32"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="32"> Podziękowania dla

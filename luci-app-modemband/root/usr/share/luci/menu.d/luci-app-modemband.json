@@ -8,17 +8,34 @@
 		}
 	},
 	
-	"admin/modem/modemband": {
+	"admin/modem/luci-app-modemband": {
 		"title": "Preferred LTE Bands",
 		"order": 10,
 		"action": {
-			"type": "view",
-			"path": "modem/blte"
+			"type": "alias",
+			"path": "admin/modem/luci-app-modemband/blte"
 		},
 		"depends": {
 			"acl": [ "luci-app-modemband" ],
 			"uci": { "modemband": true }
 		}
-	}
+	},
+	
+	"admin/modem/luci-app-modemband/blte": {
+		"title": "Preferred bands",
+		"order": 10,
+		"action": {
+			"type": "view",
+			"path": "modem/blte"
+		}
+	},
 
+	"admin/modem/luci-app-modemband/blteconfig": {
+		"title": "Configuration",
+		"order": 20,
+		"action": {
+			"type": "view",
+			"path": "modem/blteconfig"
+		}
+	}
 }

@@ -75,3 +75,45 @@ msgstr "Wybierz preferowane pasmo(-a) dla modemu."
 
 msgid "Do you really want to set up all possible bands for the modem?"
 msgstr "Czy na pewno chcesz ustawić wszystkie możliwe pasma dla modemu?"
+
+msgid "Preferred bands"
+msgstr "Preferowane pasma"
+
+msgid "Configuration"
+msgstr "Konfiguracja"
+
+msgid "Configuration luci-app-modemband"
+msgstr "Konfiguracja luci-app-modemband"
+
+msgid "Configuration panel for modemband and gui application."
+msgstr "Panel ustawień dla aplikacji modemband oraz dla interfejsu użytkownika."
+
+msgid "Interface"
+msgstr "Interfejs"
+
+msgid "Network interface for Internet access."
+msgstr "Interfejs sieciowy umożliwiający dostęp do Internetu."
+
+msgid "WAN restart after making changes to bands."
+msgstr "Restart WAN po wprowadzeniu zmian w pasmach."
+
+msgid "Modem restart"
+msgstr "Restart modemu"
+
+msgid "Modem restart after making changes to bands."
+msgstr "Restart modemu po wprowadzeniu zmian w pasmach."
+
+msgid "Restart with AT command"
+msgstr "Restart poleceniem AT"
+
+msgid "AT command to restart the modem."
+msgstr "Polecenie AT restartujące modem."
+
+msgid "Port for communication with the modem"
+msgstr "Port do komunikacji z modemem"
+
+msgid "Please select a port"
+msgstr "Proszę wybrać port"
+
+msgid "Select one of the available ttyUSBX ports."
+msgstr "Wybierz jeden z dostępnych portów ttyUSBX."

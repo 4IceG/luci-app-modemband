@@ -5,8 +5,8 @@
 'require ui';
 'require uci';
 'require poll';
-'require tools.widgets as widgets';
 'require dom';
+'require tools.widgets as widgets';
 
 /*
 	Copyright 2022 Rafał Wabik - IceG - From eko.one.pl forum
@@ -168,9 +168,14 @@ function handleAction(ev) {
 		}
 	}
 	if (ev === 'restartwan') {
-			fs.exec('/sbin/ifdown', ['wan']);
+		return uci.load('modemband').then(function() {
+		var wname = (uci.get('modemband', '@modemband[0]', 'iface'));
+
+			fs.exec('/sbin/ifdown', [ wname ]);
 			fs.exec('sleep 3');
-			fs.exec('/sbin/ifup', ['wan']);
+			fs.exec('/sbin/ifup', [ wname ]);
+		
+    		});
 	}
 }
 
@@ -179,7 +184,6 @@ return view.extend({
 
 	load: function() {
 		return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']));
-			uci.load('modemband')
 	},
 
 	render: function(data) {
@@ -309,6 +313,29 @@ return view.extend({
 			ax = ax.replace(/,/g, ' ')
 			fs.exec_direct('/usr/bin/modemband.sh', [ 'setbands', ax ]);
 			ui.addNotification(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.') ), 'info');
+
+			return uci.load('modemband').then(function() {
+				var wrestart = (uci.get('modemband', '@modemband[0]', 'wanrestart'));
+				var mrestart = (uci.get('modemband', '@modemband[0]', 'modemrestart'));
+				var cmdrestart = (uci.get('modemband', '@modemband[0]', 'restartcmd'));
+				var wname = (uci.get('modemband', '@modemband[0]', 'iface'));
+				var sport = (uci.get('modemband', '@modemband[0]', 'set_port'));
+				
+				if (wrestart == '1') {
+
+				fs.exec('/sbin/ifdown', [ wname ]);
+				fs.exec('sleep 3');
+				fs.exec('/sbin/ifup', [ wname ]);
+				}
+
+				if (mrestart == '1') {
+
+				fs.exec('sleep 15');
+				//sms_tool -d $_DEVICE at "cmd"
+				fs.exec_direct('/usr/bin/sms_tool', [ '-d' , sport , 'at' , cmdrestart ]);
+				}
+		
+    			});
 		});
 	},
 

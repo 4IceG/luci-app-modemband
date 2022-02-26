@@ -178,11 +178,19 @@ for _DEV in $_DEVS; do
 done
 
 if [ -z "$_DEVICE" ]; then
-	echo "No supported modem was found, quitting..."
+	if [ "x$1" = "xjson" ]; then
+		echo '{"error":"No supported modem was found, quitting..."}'
+	else
+		echo "No supported modem was found, quitting..."
+	fi
 	exit 0
 fi
 if [ ! -e "$_DEVICE" ]; then
-	echo "Port not found, quitting..."
+	if [ "x$1" = "xjson" ]; then
+		echo '{"error":"Port not found, quitting..."}'
+	else
+		echo "Port not found, quitting..."
+	fi
 	exit 0
 fi
 

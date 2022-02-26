@@ -117,3 +117,9 @@ msgstr "Proszę wybrać port"
 
 msgid "Select one of the available ttyUSBX ports."
 msgstr "Wybierz jeden z dostępnych portów ttyUSBX."
+
+msgid "No supported modem was found, quitting..."
+msgstr "Nie znaleziono obsługiwanego modemu, kończymy pracę..."
+
+msgid "Port not found, quitting..."
+msgstr "Port nie został znaleziony, kończymy pracę..."

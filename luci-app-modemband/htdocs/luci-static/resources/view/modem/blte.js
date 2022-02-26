@@ -205,7 +205,6 @@ return view.extend({
 				sbands = sbands.replace('undefined', '');
 		}
 		
-
 		pollData: poll.add(function() {
 			return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']))
 			.then(function(res) {
@@ -276,7 +275,6 @@ return view.extend({
 						E('div', { 'class': 'td left', 'width': '33%' }, [ _('Supported LTE bands:')]),
 						E('div', { 'class': 'td left', 'id': 'sbands' }, [ sbands || '-' ]),
 					]),
-
 				])
 			]);
 		}, o, this);
@@ -300,7 +298,6 @@ return view.extend({
 		
 		o.multiple = true;
 		o.placeholder = _('Please select a band(s)');
-
 
 		o.cfgvalue = function(section_id) {
 			return L.toArray((json.enabled).join(' '));

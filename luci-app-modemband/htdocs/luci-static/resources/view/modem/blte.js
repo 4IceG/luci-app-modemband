@@ -174,7 +174,6 @@ function handleAction(ev) {
 			fs.exec('/sbin/ifdown', [ wname ]);
 			fs.exec('sleep 3');
 			fs.exec('/sbin/ifup', [ wname ]);
-		
     		});
 	}
 }
@@ -190,19 +189,22 @@ return view.extend({
 		var m, s, o;
 
 		var json = JSON.parse(data);
-		var modem = json.modem;
 		var modemen, sbands;
+
+		if(!("error" in json)) {
+
+		var modem = json.modem;
 		for (var i = 0; i < json.enabled.length; i++) 
 		{
 				modemen += 'B' + json.enabled[i] + '  ';
 				modemen = modemen.replace('undefined', '');
 		}
-
 		for (var i = 0; i < json.supported.length; i++) 
 		{
 				sbands += 'B' + json.supported[i].band + '  ';
 				sbands = sbands.replace('undefined', '');
 		}
+		
 
 		pollData: poll.add(function() {
 			return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']))
@@ -235,6 +237,19 @@ return view.extend({
 
 			});
 		});
+		}		
+		else {
+			if (json.error.includes('No supported') == true) {
+			modemen = '-';
+			sbands = '-';
+			ui.addNotification(null, E('p', _('No supported modem was found, quitting...')), 'error');
+			}
+			if (json.error.includes('Port not found') == true) {
+			modemen = '-';
+			sbands = '-';
+			ui.addNotification(null, E('p', _('Port not found, quitting...')), 'error');
+			}
+		}
 
 		var info = _('Configuration modem frequency bands. More information about the modemband application on the') + ' <a href="https://eko.one.pl/?p=openwrt-modemband" target="_blank">' + _('eko.one.pl forum') + '</a>.';
 
@@ -270,6 +285,7 @@ return view.extend({
 		s.anonymous = true;
 		s.addremove = false;
 
+		if(!("error" in json)) {
 		s.tab('bandset', _('Preferred bands settings'));
 		s.tab('aoptions', _('Additional options'));
  
@@ -281,9 +297,10 @@ return view.extend({
 		{
 			o.value(json.supported[i].band, _('B')+json.supported[i].band,json.supported[i].txt);
 		}
-
+		
 		o.multiple = true;
 		o.placeholder = _('Please select a band(s)');
+
 
 		o.cfgvalue = function(section_id) {
 			return L.toArray((json.enabled).join(' '));
@@ -298,6 +315,7 @@ return view.extend({
 
 		s.anonymous = true;
 		o = s.taboption('aoptions', SYSTmagic);
+		}
 
 		return m.render();
 	},
@@ -334,7 +352,6 @@ return view.extend({
 				//sms_tool -d $_DEVICE at "cmd"
 				fs.exec_direct('/usr/bin/sms_tool', [ '-d' , sport , 'at' , cmdrestart ]);
 				}
-		
     			});
 		});
 	},

@@ -7,6 +7,7 @@
 
 Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A program to set LTE bands for selected 4G modems.
 
+``` bash
 Supported devices:
 - BroadMobi BM806U
 - Dell DW5821e Snapdragon X20 LTE
@@ -26,7 +27,7 @@ Supported devices:
 - ZTE MF286A (router)
 - ZTE MF286D (router)
 - ZTE MF286R (router)
-
+```
 
 Do you have another type of modem? Would you like to add support for it?
 Send PR/mail with description:

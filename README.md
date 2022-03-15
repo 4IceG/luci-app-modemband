@@ -15,6 +15,12 @@ Supported devices:
 - Fibocom L850-GL in mbim mode
 - Fibocom L860-GL
 - Huawei (various models) in serial mode
+  - Huawei E3372/E3276
+  - Huawei ME906s
+  - Huawei ME909s-120
+  - Huawei ME909s-821
+  - Huawei ME909s-821a
+  - Huawei ME909u-521
 - Quectel EC20
 - Quectel EC25
 - Quectel EG06-E

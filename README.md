@@ -10,12 +10,14 @@ Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A pr
 ``` bash
 Supported devices:
 - BroadMobi BM806U
-- Dell DW5821e Snapdragon X20 LTE
+- Dell DW5821e Snapdragon X20 LTE (Foxconn T77W968)
 - Fibocom L850-GL
 - Fibocom L850-GL in mbim mode
 - Fibocom L860-GL
+- HP lt4220 (Foxconn T77W676)
+- HP lt4220 (Foxconn T77W676) in mbim mode
 - Huawei (various models) in serial mode
-  - Huawei E3372/E3276
+  - Huawei E3272/E3372/E3276
   - Huawei ME906s
   - Huawei ME909s-120
   - Huawei ME909s-821
@@ -28,7 +30,9 @@ Supported devices:
 - Quectel EM160R-GL
 - Quectel EP06-E
 - Quectel RG502Q-EA
-- Telit LN960
+- Telit LN940 (Foxconn T77W676)
+- Telit LN940 (Foxconn T77W676) in mbim mode
+- Telit LN960 (Foxconn T77W968)
 - ZTE MF286 (router)
 - ZTE MF286A (router)
 - ZTE MF286D (router)
@@ -49,7 +53,7 @@ Send PR/mail with description:
 kmod-usb-serial kmod-usb-serial-option
 
 #+DEPENDS:
-sms-tool_2021-12-03-d38898f4-1 modemband_20220313
+sms-tool_2021-12-03-d38898f4-1 modemband_20220403
 
 #The sms-tool package is not available in the OpenWrt core repository. 
 #Sms-tool is only available in the eko.one.pl forum repository. 
@@ -60,8 +64,8 @@ opkg update
 opkg install sms-tool
 
 Install app.
-wget https://github.com/4IceG/luci-app-modemband/releases/download/1.0.12-20220325/luci-app-modemband_1.0.12-20220325_all.ipk -O /tmp/luci-app-modemband_1.0.12-20220325_all.ipk
-opkg install /tmp/luci-app-modemband_1.0.12-20220325_all.ipk
+wget https://github.com/4IceG/luci-app-modemband/releases/download/1.0.12-20220403/luci-app-modemband_1.0.12-20220403_all.ipk -O /tmp/luci-app-modemband_1.0.12-20220403_all.ipk
+opkg install /tmp/luci-app-modemband_1.0.12-20220403_all.ipk
 
 ```
 

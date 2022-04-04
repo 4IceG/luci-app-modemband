@@ -53,7 +53,7 @@ Send PR/mail with description:
 kmod-usb-serial kmod-usb-serial-option
 
 #+DEPENDS:
-sms-tool_2021-12-03-d38898f4-1 modemband_20220403
+sms-tool_2021-12-03-d38898f4-1 modemband_20220404
 
 #The sms-tool package is not available in the OpenWrt core repository. 
 #Sms-tool is only available in the eko.one.pl forum repository. 
@@ -64,8 +64,8 @@ opkg update
 opkg install sms-tool
 
 Install app.
-wget https://github.com/4IceG/luci-app-modemband/releases/download/1.0.12-20220403/luci-app-modemband_1.0.12-20220403_all.ipk -O /tmp/luci-app-modemband_1.0.12-20220403_all.ipk
-opkg install /tmp/luci-app-modemband_1.0.12-20220403_all.ipk
+wget https://github.com/4IceG/luci-app-modemband/releases/download/1.0.12-20220404/luci-app-modemband_1.0.12-20220404_all.ipk -O /tmp/luci-app-modemband_1.0.12-20220404_all.ipk
+opkg install /tmp/luci-app-modemband_1.0.12-20220404_all.ipk
 
 ```
 

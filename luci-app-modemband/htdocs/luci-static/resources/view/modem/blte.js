@@ -252,13 +252,13 @@ return view.extend({
 	render: function(data) {
 		var m, s, o;
 
-		if(data != null){
+		if (data != null){
 		try {
 
 		var json = JSON.parse(data);
 		var modemen, sbands;
 
-		if(!("error" in json)) {
+		if (!("error" in json)) {
 
 		var modem = json.modem;
 		for (var i = 0; i < json.enabled.length; i++) 

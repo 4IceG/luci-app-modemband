@@ -246,11 +246,14 @@ return view.extend({
 	formdata: { modemband: {} },
 
 	load: function() {
-		return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']));
+		return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', [ 'json' ]));
 	},
 
 	render: function(data) {
 		var m, s, o;
+
+		if(data != null){
+		try {
 
 		var json = JSON.parse(data);
 		var modemen, sbands;
@@ -322,6 +325,12 @@ return view.extend({
 			ui.addNotification(null, E('p', _('Port not found, quitting...')), 'error');
 			}
 		}
+
+			} catch (err) {
+  				console.log('Error: ', err.message);
+			}
+
+		}		
 
 		var info = _('Configuration modem frequency bands. More information about the modemband application on the') + ' <a href="https://eko.one.pl/?p=openwrt-modemband" target="_blank">' + _('eko.one.pl forum') + '</a>.';
 

@@ -14,10 +14,12 @@ Supported devices:
 - Fibocom L850-GL
 - Fibocom L850-GL in mbim mode
 - Fibocom L860-GL
+- HP lt4112
 - HP lt4220 (Foxconn T77W676)
 - HP lt4220 (Foxconn T77W676) in mbim mode
 - Huawei (various models) in serial mode
   - Huawei E3272/E3372/E3276
+  - Huawei ME906E
   - Huawei ME906s
   - Huawei ME909s-120
   - Huawei ME909s-821

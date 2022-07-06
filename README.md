@@ -67,7 +67,9 @@ sms-tool_2021-12-03-d38898f4-1 modemband_20220404
 opkg update
 opkg install sms-tool
 
-Install app.
+#Package installation example
+Latest version ➜ https://github.com/4IceG/luci-app-modemband/releases/latest
+
 wget https://github.com/4IceG/luci-app-modemband/releases/download/1.0.13-20220701/luci-app-modemband_1.0.13-20220701_all.ipk -O /tmp/luci-app-modemband_1.0.13-20220701_all.ipk
 opkg install /tmp/luci-app-modemband_1.0.13-20220701_all.ipk
 

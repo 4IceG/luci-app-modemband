@@ -14,7 +14,7 @@ Supported devices:
 - Fibocom L850-GL
 - Fibocom L850-GL in mbim mode
 - Fibocom L860-GL
-- HP lt4112
+- HP lt4112 (Huawei ME906E)
 - HP lt4220 (Foxconn T77W676)
 - HP lt4220 (Foxconn T77W676) in mbim mode
 - Huawei (various models) in serial mode
@@ -35,10 +35,12 @@ Supported devices:
 - Telit LN940 (Foxconn T77W676)
 - Telit LN940 (Foxconn T77W676) in mbim mode
 - Telit LN960 (Foxconn T77W968)
+- Telit LN960
 - ZTE MF286 (router)
 - ZTE MF286A (router)
 - ZTE MF286D (router)
 - ZTE MF286R (router)
+
 ```
 
 Do you have another type of modem? Would you like to add support for it?

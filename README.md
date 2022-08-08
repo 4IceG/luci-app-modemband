@@ -40,6 +40,7 @@ Supported devices:
 - ZTE MF286A (router)
 - ZTE MF286D (router)
 - ZTE MF286R (router)
+- ZTE MF289R (router)
 
 ```
 

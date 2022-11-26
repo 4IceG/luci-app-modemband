@@ -53,29 +53,59 @@ Send PR/mail with description:
 - an AT command to set specific bands
 - a list of all bands that can be set on the modem
 
+## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Installation / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Instalacja
 ``` bash
+#Package dependencies:
+
+#For conventional modems.
 #Modem drivers are required for proper operation.
-kmod-usb-serial kmod-usb-serial-option
+opkg install kmod-usb-serial kmod-usb-serial-option sms-tool
 
-#+DEPENDS:
-sms-tool_2021-12-03-d38898f4-1 modemband_20220404
+#The sms-tool package is available in the OpenWrt Master repository.
 
-#The sms-tool package is not available in the OpenWrt core repository. 
-#Sms-tool is only available in the eko.one.pl forum repository. 
-#If you do not have an image from forum eko.one.pl you have to compile the package manually.
-
-#For images from the eko.one.pl forum we proceed:
+#1a. Install sms-tool from Master.
 opkg update
 opkg install sms-tool
 
-#Package installation example
-Latest version ➜ https://github.com/4IceG/luci-app-modemband/releases/latest
+#1b. Download the sms-tool package and install manualy.
+#An example link to the package.
+#https://downloads.openwrt.org/snapshots/packages/*architecture*/packages/sms-tool_2022-03-21-f07699ab-1_*architecture*.ipk
 
-wget https://github.com/4IceG/luci-app-modemband/releases/download/1.0.13-20220701/luci-app-modemband_1.0.13-20220701_all.ipk -O /tmp/luci-app-modemband_1.0.13-20220701_all.ipk
-opkg install /tmp/luci-app-modemband_1.0.13-20220701_all.ipk
-
+#2. Add my repository (https://github.com/4IceG/Modem-extras) to the image and follow the commands.
+#For images downloaded from eko.one.pl.
+#Installation procedure is similar, only there is no need to manually download the sms-tool package.
+opkg update
+opkg install luci-app-modemband
 
 ```
+
+## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> User compilation / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Kompilacja przez użytkownika
+``` bash
+#The package can be added to Openwrt sources in two ways:
+
+cd feeds/luci/applications/
+git clone https://github.com/4IceG/luci-app-modemband.git
+cd ../../..
+./scripts feeds update -a; ./scripts/feeds install -a
+make menuconfig
+
+or e.g.
+
+cd packages/
+git clone https://github.com/4IceG/luci-app-modemband.git
+git pull
+make package/symlinks
+make menuconfig
+
+You may need to correct the file paths and the number of folders to look like this:
+feeds/luci/applications/luci-app-modemband/Makefile
+or
+packages/luci-app-modemband/Makefile
+
+Then you can compile the packages one by one, an example command:
+make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
+```
+
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podgląd
 

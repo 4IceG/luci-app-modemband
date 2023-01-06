@@ -62,20 +62,20 @@ opkg install kmod-usb-serial kmod-usb-serial-option sms-tool
 ```
 The sms-tool package is available in the OpenWrt Master repository.
 
-#### 1a. Install sms-tool from Master.
+#### Step 1a. Install sms-tool from Master.
 ``` bash
 opkg update
 opkg install sms-tool
 ```
 
-#### 1b. Download the sms-tool package and install manualy.
+#### Step 1b. Download the sms-tool package and install manualy.
 An example link to the package.
 
 In the link below, replace ```*architecture*``` with the architecture of your router, e.g. arm_cortex-a7_neon-vfpv4, mipsel_24kc.
 ``` bash
 https://downloads.openwrt.org/snapshots/packages/*architecture*/packages/sms-tool_2022-03-21-f07699ab-1_*architecture*.ipk
 ```
-#### 2. Add my repository (https://github.com/4IceG/Modem-extras) to the image and follow the commands.
+#### Step 2. Add my repository (https://github.com/4IceG/Modem-extras) to the image and follow the commands.
 ``` bash
 opkg update
 opkg install luci-app-modemband

@@ -70,6 +70,8 @@ opkg install sms-tool
 
 #### 1b. Download the sms-tool package and install manualy.
 An example link to the package.
+
+In the link below, replace ```*architecture*``` with the architecture of your router, e.g. arm_cortex-a7_neon-vfpv4, mipsel_24kc.
 ``` bash
 https://downloads.openwrt.org/snapshots/packages/*architecture*/packages/sms-tool_2022-03-21-f07699ab-1_*architecture*.ipk
 ```

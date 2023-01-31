@@ -82,6 +82,12 @@ In the link below, replace ```*architecture*``` with the architecture of your ro
 ``` bash
 https://downloads.openwrt.org/snapshots/packages/*architecture*/packages/sms-tool_2022-03-21-f07699ab-1_*architecture*.ipk
 ```
+Example of package installation (file downloaded with wget-ssl).
+``` bash
+wget https://downloads.openwrt.org/snapshots/packages/aarch64_cortex-a72/packages/sms-tool_2022-03-21-f07699ab-1_aarch64_cortex-a72.ipk -O /tmp/sms-tool_2022-03-21.ipk
+opkg install /tmp/sms-tool_2022-03-21.ipk
+```
+
 #### Step 2. Add my repository (https://github.com/4IceG/Modem-extras) to the image and follow the commands.
 ``` bash
 opkg update

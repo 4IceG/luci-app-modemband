@@ -126,7 +126,17 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podgląd
 
-![](https://github.com/4IceG/Personal_data/blob/master/modemband20220306.gif?raw=true)
+> "Preferred bands" window / Okno "Preferowanych pasma":
+
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/mb1.png?raw=true)
+
+> "Configuration" window / Okno "Konfiguracji":
+
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/mb2.png?raw=true)
+
+> "Modem settings template" window / Okno "Szablonu ustawień modemu":
+
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/mb3.png?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podziękowania dla

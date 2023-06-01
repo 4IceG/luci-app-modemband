@@ -8,9 +8,11 @@
 Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A program to set LTE bands for selected 4G modems.
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> What You Should Know / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Co powinieneś wiedzieć
-> My package will not work if you are using ModemManager.
+> My package will not work if you are using ModemManager.   
+> Preferred version OpenWrt >= 21.02.
 
-> Mój pakiet nie będzie działać jeżeli uzywasz ModemManager-a.
+> Mój pakiet nie będzie działać jeżeli uzywasz ModemManager-a.   
+> Preferowana wersja OpenWrt >= 21.02.
 
 ``` bash
 Supported devices:

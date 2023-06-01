@@ -7,6 +7,11 @@
 
 Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A program to set LTE bands for selected 4G modems.
 
+### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> What You Should Know / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Co powinieneś wiedzieć
+> My package will not work if you are using ModemManager.
+
+> Mój pakiet nie będzie działać jeżeli uzywasz ModemManager-a.
+
 ``` bash
 Supported devices:
 - BroadMobi BM806U
@@ -54,13 +59,10 @@ Send PR/mail with description:
 - an AT command to set specific bands
 - a list of all bands that can be set on the modem
 
-### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> What You Should Know / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Co powinieneś wiedzieć
-> My package will not work if you are using ModemManager.
-
-> Mój pakiet nie będzie działać jeżeli uzywasz ModemManager-a.
-
-
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Installation / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Instalacja
+
+<details>
+   <summary>Pokaż | Show me</summary>
 
 #### Package dependencies for conventional modems.
 Modem drivers are required for proper operation.
@@ -136,8 +138,14 @@ opkg install luci-app-modemband
 ```
 For images downloaded from eko.one.pl.
 Installation procedure is similar, only there is no need to manually download the sms-tool package.
+  
+</details>
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> User compilation / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Kompilacja przez użytkownika
+
+<details>
+   <summary>Pokaż | Show me</summary>
+
 ``` bash
 #The package can be added to Openwrt sources in two ways:
 
@@ -163,7 +171,7 @@ packages/luci-app-modemband/Makefile
 Then you can compile the packages one by one, an example command:
 make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 ```
-
+</details>
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podgląd
 

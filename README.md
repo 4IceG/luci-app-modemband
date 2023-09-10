@@ -5,7 +5,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/4IceG/luci-app-modemband?style=flat-square)
 ![GitHub All Releases](https://img.shields.io/github/downloads/4IceG/luci-app-modemband/total)
 
-Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A program to set LTE bands for selected 4G modems.
+Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A program to set LTE/5G bands for selected 4G/5G modems.
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> What You Should Know / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Co powinieneś wiedzieć
 > My package will not work if you are using ModemManager.   
@@ -178,17 +178,21 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Preview / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podgląd
 
-> "Preferred bands" window / Okno "Preferowane pasma":
+> "Preferred LTE bands" window / Okno "Preferowane pasma LTE":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/mb1.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/luci-app-modemband/modemband1.png?raw=true)
+
+> "Preferred 5G bands" window / Okno "Preferowane pasma 5G":
+
+![](https://github.com/4IceG/Personal_data/blob/master/luci-app-modemband/modemband2.png?raw=true)
 
 > "Configuration" window / Okno "Konfiguracji":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/mb2.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/luci-app-modemband/modemband3.png?raw=true)
 
 > "Modem settings template" window / Okno "Szablon ustawień modemu":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/mb3.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/luci-app-modemband/modemband4.png?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podziękowania dla

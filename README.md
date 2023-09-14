@@ -181,11 +181,15 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 > "Preferred LTE bands" window / Okno "Preferowane pasma LTE":
 
-![](https://github.com/4IceG/Personal_data/blob/master/luci-app-modemband/modemband1.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/1.0.21a.png?raw=true)
 
-> "Preferred 5G bands" window / Okno "Preferowane pasma 5G":
+> "Preferred 5G SA bands" window / Okno "Preferowane pasma 5G SA":
 
-![](https://github.com/4IceG/Personal_data/blob/master/luci-app-modemband/modemband2.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/1.0.21b.png?raw=true)
+
+> "Preferred 5G NSA bands" window / Okno "Preferowane pasma 5G NSA":
+
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/1.0.21c.png?raw=true)
 
 > "Configuration" window / Okno "Konfiguracji":
 

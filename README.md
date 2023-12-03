@@ -43,6 +43,8 @@ Supported devices:
 - Quectel RM500Q-GL
 - Quectel RM502Q-AE
 - Quectel RM520N-GL
+- SIMCOM SIM8200EA-M2
+- Telit LM940
 - Telit LN940 (Foxconn T77W676)
 - Telit LN940 (Foxconn T77W676) in mbim mode
 - Telit LN960 (Foxconn T77W968)
@@ -51,7 +53,7 @@ Supported devices:
 - ZTE MF286A (router)
 - ZTE MF286D (router)
 - ZTE MF286R (router)
-- ZTE MF289F (router)
+- ZTE MF289R (router)
 
 ```
 

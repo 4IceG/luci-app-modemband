@@ -188,23 +188,23 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 > "Preferred LTE bands" window / Okno "Preferowane pasma LTE":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/luci-app-modemband_la.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_lam.png?raw=true)
 
 > "Preferred 5G SA bands" window / Okno "Preferowane pasma 5G SA":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/luci-app-modemband_lb.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_lbm.png?raw=true)
 
 > "Preferred 5G NSA bands" window / Okno "Preferowane pasma 5G NSA":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/luci-app-modemband_lc.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_lcm.png?raw=true)
 
 > "Configuration" window / Okno "Konfiguracji":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/luci-app-modemband_d.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_em.png?raw=true)
 
 > "Modem settings template" window / Okno "Szablon ustawień modemu":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/luci-app-modemband_e.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_dm.png?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podziękowania dla

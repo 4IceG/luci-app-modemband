@@ -200,11 +200,11 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 > "Configuration" window / Okno "Konfiguracji":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_em.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_dm.png?raw=true)
 
 > "Modem settings template" window / Okno "Szablon ustawień modemu":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_dm.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_em.png?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podziękowania dla

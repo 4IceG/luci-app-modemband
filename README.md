@@ -63,7 +63,7 @@ Supported devices:
 
 ```
 
-## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> New modem support / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Wsparcia dla nowego modemu
+## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> New modem support / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Dodanie wsparcia dla nowego modemu
 > Do you have another type of modem? Would you like to add support for it?
 Send PR/mail with description:
 - exact name of modem and ew version number

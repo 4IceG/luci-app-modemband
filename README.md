@@ -14,8 +14,14 @@ Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A pr
 > Mój pakiet nie będzie działać jeżeli uzywasz ModemManager-a.   
 > Preferowana wersja OpenWrt >= 21.02.
 
+
+### Supported devices:
+
+<details>
+   <summary>Pokaż | Show me</summary>
+
+
 ``` bash
-Supported devices:
 - BroadMobi BM806U
 - Dell DW5821e Snapdragon X20 LTE (Foxconn T77W968)
 - Fibocom FM350-GL
@@ -63,6 +69,7 @@ Supported devices:
 - ZTE MF289R (router)
 
 ```
+</details>
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> New modem support / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Dodanie wsparcia dla nowego modemu
 > Do you have another type of modem? Would you like to add support for it?
@@ -192,23 +199,23 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 > "Preferred LTE bands" window / Okno "Preferowane pasma LTE":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_lam.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-lte.png?raw=true)
 
 > "Preferred 5G SA bands" window / Okno "Preferowane pasma 5G SA":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_lbm.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-5gsa.png?raw=true)
 
 > "Preferred 5G NSA bands" window / Okno "Preferowane pasma 5G NSA":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_lcm.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-5gnsa.png?raw=true)
 
 > "Configuration" window / Okno "Konfiguracji":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_dm.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-config.png?raw=true)
 
 > "Modem settings template" window / Okno "Szablon ustawień modemu":
 
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/luci-app-modemband_em.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-template.png?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Thanks to / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Podziękowania dla

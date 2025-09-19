@@ -201,6 +201,8 @@ make V=s -j1 feeds/luci/applications/luci-app-modemband/compile
 
 ![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-lte.png?raw=true)
 
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/lte_dark.png?raw=true)
+
 > "Preferred 5G SA bands" window / Okno "Preferowane pasma 5G SA":
 
 ![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/modemband/modemband-5gsa.png?raw=true)

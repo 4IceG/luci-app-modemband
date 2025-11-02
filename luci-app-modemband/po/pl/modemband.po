@@ -44,6 +44,27 @@ msgstr ""
 "Konfiguracja preferowanych pasm modemu. Więcej "
 "informacji o aplikacji modemband na %sforum eko.one.pl%s."
 
+msgid "More information about the modemband application on the"
+msgstr "Więcej informacji o aplikacji modemband na"
+
+msgid "eko.one.pl forum"
+msgstr "forum eko.one.pl"
+
+msgid "Unsupported Modem"
+msgstr "Nieobsługiwany modem"
+
+msgid "No supported modem was found. Check if your modem supports this technology and if it is in the list of supported modems."
+msgstr "Nie znaleziono obsługiwanego modemu. Sprawdź, czy Twój modem obsługuje tę technologię i czy znajduje się na liście obsługiwanych modemów."
+
+msgid "Configuration Error"
+msgstr "Błąd konfiguracji"
+
+msgid "LTE bands cannot be read. Check if your modem supports this technology and if it is in the list of supported modems."
+msgstr "Pasma LTE nie mogą być odczytane. Sprawdź, czy Twój modem obsługuje tę technologię i czy znajduje się na liście obsługiwanych modemów."
+
+msgid "5G bands cannot be read. Check if your modem supports this technology and if it is in the list of supported modems."
+msgstr "Pasma 5G nie mogą być odczytane. Sprawdź, czy Twój modem obsługuje tę technologię i czy znajduje się na liście obsługiwanych modemów."
+
 msgid "LTE Bands Configuration"
 msgstr "Konfiguracja pasm LTE"
 
@@ -152,50 +173,14 @@ msgstr "Proszę wybrać port"
 msgid "Select one of the available ttyUSBX ports."
 msgstr "Wybierz jeden z dostępnych portów ttyUSBX."
 
-msgid "No supported modem was found, quitting..."
-msgstr "Nie znaleziono obsługiwanego modemu, kończymy pracę..."
-
-msgid "Port not found, quitting..."
-msgstr "Port nie został znaleziony, kończymy pracę..."
-
-msgid "Additional options useful for modem configuration."
-msgstr "Dodatkowe opcje przydatne przy konfiguracji modemu."
-
-msgid "Connection / router restart"
-msgstr "Restart połączenia / routera"
-
-msgid "Hint: The name of the WAN section can be changed in the package settings panel."
-msgstr "Podpowiedź: Nazwę sekcji WAN można zmienić w panelu ustawień pakietu."
-
-msgid "LTE band aggregation at UL (upload)"
-msgstr "Agregacja pasm LTE w UL (upload)"
-
-msgid "No supported modem / router was found..."
-msgstr "Nie znaleziono obsługiwanego modemu / routera..."
-
 msgid "Hint: Option dedicated to the ZTE MF286D router."
 msgstr "Podpowiedź: Opcja dedykowana dla routera ZTE MF286D."
-
-msgid "Enable aggregation"
-msgstr "Włącz agregację"
-
-msgid "Disable aggregation"
-msgstr "Wyłącz agregację"
 
 msgid "Disable"
 msgstr "Wyłącz"
 
 msgid "Enable"
 msgstr "Włącz"
-
-msgid "Turn off notifications"
-msgstr "Wyłącz powiadomienia"
-
-msgid "Appearance and action settings"
-msgstr "Ustawienia wyglądu i działania"
-
-msgid "Checking this option disables the notification that appears every time the bands are changed."
-msgstr "Zaznaczenie tej opcji wyłącza powiadomienie pojawiające się przy każdej zmianie pasm."
 
 msgid "Modem settings template"
 msgstr "Szablon ustawień modemu"

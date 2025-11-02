@@ -12,6 +12,61 @@
     Copyright 2022-2025 Rafał Wabik - IceG - From eko.one.pl forum
 */
 
+function pop(a, message, severity) {
+    ui.addNotification(a, message, severity);
+}
+function popTimeout(a, message, timeout, severity) {
+    ui.addTimeLimitedNotification(a, message, timeout, severity);
+}
+
+function handleAction(ev) {
+    if (ev === 'reload') {
+        location.reload();
+    }
+    if (ev === 'resetbandz') {
+        if (confirm(_('Do you really want to set up all possible bands for the modem?'))) {
+            fs.exec_direct('/usr/bin/modemband.sh', ['setbands', 'default']);
+            popTimeout(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.')), 5000, 'info');
+        }
+    }
+}
+
+function updateTileColorsFromEnabled(enabledArray) {
+    try {
+        let enabledNums = new Set((enabledArray || []).map(function(v) {
+            return parseInt(v, 10);
+        }));
+
+        let grid = document.getElementById('bands-grid');
+        if (!grid) return;
+
+        grid.querySelectorAll('[data-band]').forEach(function(node) {
+            let key = node.getAttribute('data-band');
+            let m = key ? key.match(/\d+$/) : null;
+            let num = m ? parseInt(m[0], 10) : null;
+            let isOn = (num != null) && enabledNums.has(num);
+
+            node.classList.add('band-tile');
+            node.classList.toggle('band-tile--on',  !!isOn);
+            node.classList.toggle('band-tile--off', !isOn);
+
+            node.style.backgroundColor = '';
+            node.style.color = '';
+        });
+    } catch (e) {}
+}
+
+function isValidLteData(json) {
+    return json &&
+           json.supported &&
+           Array.isArray(json.supported) &&
+           json.supported.length > 0 &&
+           json.enabled &&
+           Array.isArray(json.enabled);
+}
+
+let pollId;
+
 let CBISelectswitch = form.DummyValue.extend({
     renderWidget: function(section_id, option_id, cfgvalue) {
         let section = this.section;
@@ -114,78 +169,120 @@ let cbiRichListValue = form.ListValue.extend({
     }
 });
 
-function pop(a, message, severity) {
-    ui.addNotification(a, message, severity);
-}
-
-function popTimeout(a, message, timeout, severity) {
-    ui.addTimeLimitedNotification(a, message, timeout, severity);
-}
-
-function handleAction(ev) {
-    if (ev === 'reload') {
-        location.reload();
-    }
-    if (ev === 'resetbandz') {
-        if (confirm(_('Do you really want to set up all possible bands for the modem?'))) {
-            fs.exec_direct('/usr/bin/modemband.sh', ['setbands', 'default']);
-            popTimeout(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.')), 5000, 'info');
-        }
-    }
-}
-
-function updateTileColorsFromEnabled(enabledArray) {
-    try {
-        let enabledNums = new Set((enabledArray || []).map(function(v) {
-            return parseInt(v, 10);
-        }));
-
-        let grid = document.getElementById('bands-grid');
-        if (!grid) return;
-
-        grid.querySelectorAll('[data-band]').forEach(function(node) {
-            let key = node.getAttribute('data-band');
-            let m = key ? key.match(/\d+$/) : null;
-            let num = m ? parseInt(m[0], 10) : null;
-            let isOn = (num != null) && enabledNums.has(num);
-            node.style.backgroundColor = isOn ? '#34c759' : '#7f8c8d';
-            node.style.color = '#ffffff';
-        });
-    } catch (e) {}
-}
-
-function isValidLteData(json) {
-    return json && 
-           json.supported && 
-           Array.isArray(json.supported) && 
-           json.supported.length > 0 &&
-           json.enabled && 
-           Array.isArray(json.enabled);
-}
-
-let pollId;
-
 return view.extend({
     formdata: { modemband: {} },
+    isModemSupported: true,
+
+    addStyles: function () {
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.textContent = `
+        :root {
+          --tile-on-bg: #34c759;              /* ON */
+          --tile-off-bg: #7f8c8d;             /* OFF */
+          --tile-text: #ffffff;
+          --tile-on-ring: #34c759;
+          --tile-off-ring: #7f8c8d;
+          --tile-shadow: 0 1px 2px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.25);
+        }
+        :root[data-darkmode="true"] {
+          --tile-on-bg: rgba(46, 204, 113, 0.22);   /* ON */
+          --tile-off-bg: rgba(255, 255, 255, 0.08); /* OFF */
+          --tile-text: #e5e7eb;
+          --tile-on-ring: #2ecc71;
+          --tile-off-ring: rgba(255,255,255,.28);
+          --tile-shadow: 0 1px 2px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.22);
+        }
+        .band-tile {
+          background-color: var(--tile-off-bg);
+          color: var(--tile-text);
+          border: 1px solid var(--tile-off-ring);
+          box-shadow: var(--tile-shadow);
+          font-weight: 600;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-shadow: 0 1px 2px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.25);
+          user-select: none;
+        }
+        .band-tile.band-tile--on  { background-color: var(--tile-on-bg);  border-color: var(--tile-on-ring); }
+        .band-tile.band-tile--off { background-color: var(--tile-off-bg); border-color: var(--tile-off-ring); }
+        `;
+        document.head.appendChild(style);
+    },
 
     load: function() {
         return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']));
     },
 
+    renderErrorMessage: function(title, message, forumUrl) {
+        let container = E('div', { 'class': 'cbi-map' }, [
+            E('h2', { 'name': 'content' }, _('LTE Bands Configuration')),
+            E('div', { 'class': 'cbi-section' }, [
+                E('div', { 'class': 'cbi-section-node' }, [
+                    E('div', {
+                        'class': 'alert-message warning',
+                        'style': 'padding: 15px; margin: 15px 0; background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 4px;'
+                    }, [
+                        E('h4', { 'style': 'margin-top: 0; color: #856404;' }, [
+                            E('strong', {}, title)
+                        ]),
+                        E('p', { 'style': 'margin-bottom: 10px; color: #856404;' }, message),
+                        E('p', { 'style': 'margin-bottom: 0; color: #856404;' }, [
+                            _('More information about the modemband application on the')+' ',
+                            E('a', {
+                                'href': forumUrl,
+                                'target': '_blank',
+                                'style': 'color: #0056b3; text-decoration: underline;'
+                            }, _('eko.one.pl forum')),
+                            '.'
+                        ])
+                    ])
+                ])
+            ])
+        ]);
+
+        return container;
+    },
+
     render: function(data) {
+        this.addStyles();
+
         let json = null;
+
+        if (data != null && typeof data === 'string' && data.includes('No supported modem was found')) {
+            this.isModemSupported = false;
+            return this.renderErrorMessage(
+                _('Unsupported Modem'),
+                _('No supported modem was found. Check if your modem supports this technology and if it is in the list of supported modems.'),
+                'https://eko.one.pl/?p=openwrt-modemband'
+            );
+        }
 
         if (data != null) {
             try {
                 json = JSON.parse(data);
             } catch (err) {
-                return E('div', {}, _('LTE bands cannot be read. Check if your modem supports this technology and if it is in the list of supported modems.'));
+                this.isModemSupported = false;
+                return this.renderErrorMessage(
+                    _('Configuration Error'),
+                    _('LTE bands cannot be read. Check if your modem supports this technology and if it is in the list of supported modems.'),
+                    'https://eko.one.pl/?p=openwrt-modemband'
+                );
             }
         }
 
         if (!isValidLteData(json)) {
-            return E('div', {}, _('LTE bands cannot be read. Check if your modem supports this technology and if it is in the list of supported modems.'));
+            this.isModemSupported = false;
+            return this.renderErrorMessage(
+                _('Configuration Error'),
+                _('LTE bands cannot be read. Check if your modem supports this technology and if it is in the list of supported modems.'),
+                'https://eko.one.pl/?p=openwrt-modemband'
+            );
         }
+
+        this.isModemSupported = true;
 
         let m, s, o;
 
@@ -220,53 +317,50 @@ return view.extend({
                     'margin-top:10px;padding:10px;margin-bottom:10px;'
             });
 
-            let textShadow = '0 1px 2px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.25)';
-
             json.supported.forEach(function(supportedBand) {
                 let band = supportedBand.band.toString();
                 let numb = band.match(/\d+$/);
                 let bandName = 'B' + numb;
                 let isEnabled = json.enabled.includes(supportedBand.band);
-                let color = isEnabled ? '#34c759' : '#7f8c8d';
-                let textColor = '#ffffff';
 
                 let bandDiv = E('div', {
                     'data-band': bandName,
+                    'class': 'band-tile ' + (isEnabled ? 'band-tile--on' : 'band-tile--off'),
                     'style':
-                        'background-color:' + color + ';' +
-                        'color:' + textColor + ';' +
                         'width:' + TILE_W + 'px;min-width:' + TILE_W + 'px;max-width:' + TILE_W + 'px;' +
                         'height:' + TILE_H + 'px;min-height:' + TILE_H + 'px;max-height:' + TILE_H + 'px;' +
-                        'border-radius:' + RADIUS + 'px;' +
-                        'font-weight:600;text-align:center;' +
-                        'display:flex;align-items:center;justify-content:center;' +
-                        'text-shadow:' + textShadow + ';' +
-                        'user-select:none;'
+                        'border-radius:' + RADIUS + 'px;'
                 }, [bandName]);
 
                 container.appendChild(bandDiv);
             });
 
-            const legendItems = [
-                { color: '#34c759', label: _('Currently set LTE bands') },
-                { color: '#7f8c8d', label: _('Supported LTE bands') }
-            ];
-
             let legend = E('div', {
-                'style': 'display:flex;flex-direction:column;align-items:flex-start;' +
-                         'gap:8px;margin-left:12px;margin-top:10px;margin-bottom:14px;'
-            }, legendItems.map(function(item) {
-                return E('div', { 'style': 'display:flex;align-items:center;gap:10px;' }, [
-                    E('div', {
-                        'style':
-                            'background-color:' + item.color + ';' +
-                            'width:' + TILE_W + 'px;min-width:' + TILE_W + 'px;max-width:' + TILE_W + 'px;' +
-                            'height:' + TILE_H + 'px;min-height:' + TILE_H + 'px;max-height:' + TILE_H + 'px;' +
-                            'border-radius:' + RADIUS + 'px;'
-                    }),
-                    E('label', {}, item.label)
-                ]);
-            }));
+              'style': 'display:flex;flex-direction:column;align-items:flex-start;' +
+                       'gap:8px;margin-left:12px;margin-top:10px;margin-bottom:14px;'
+            }, [
+              E('div', { 'style': 'display:flex;align-items:center;gap:10px;' }, [
+                E('div', {
+                  'class': 'band-tile band-tile--on',
+                  'style':
+                    'width:' + TILE_W + 'px;min-width:' + TILE_W + 'px;max-width:' + TILE_W + 'px;' +
+                    'height:' + TILE_H + 'px;min-height:' + TILE_H + 'px;max-height:' + TILE_H + 'px;' +
+                    'border-radius:' + RADIUS + 'px;'
+                }, ['\xa0']),
+                E('label', {}, _('Currently set LTE bands'))
+              ]),
+
+              E('div', { 'style': 'display:flex;align-items:center;gap:10px;' }, [
+                E('div', {
+                  'class': 'band-tile band-tile--off',
+                  'style':
+                    'width:' + TILE_W + 'px;min-width:' + TILE_W + 'px;max-width:' + TILE_W + 'px;' +
+                    'height:' + TILE_H + 'px;min-height:' + TILE_H + 'px;max-height:' + TILE_H + 'px;' +
+                    'border-radius:' + RADIUS + 'px;'
+                }, ['\xa0']),
+                E('label', {}, _('Supported LTE bands'))
+              ])
+            ]);
 
             blockWrap.appendChild(container);
             blockWrap.appendChild(legend);
@@ -382,6 +476,10 @@ return view.extend({
     },
 
     addFooter: function() {
+        if (!this.isModemSupported) {
+            return null;
+        }
+
         return E('div', { 'class': 'cbi-page-actions' }, [
             E('button', { 'class': 'cbi-button cbi-button-save', 'click': L.ui.createHandlerFn(this, 'handleBANDZSETup') },
                 [_('Apply changes')])

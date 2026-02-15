@@ -65,6 +65,15 @@
 			"type": "view",
 			"path": "modem/blteedit"
 		}
+	},
+
+	"admin/modem/luci-app-modemband/modemband_support": {
+		"title": "Package update and support",
+		"order": 60,
+		"action": {
+			"type": "view",
+			"path": "modem/modemband_support"
+		}
 	}
 
 }

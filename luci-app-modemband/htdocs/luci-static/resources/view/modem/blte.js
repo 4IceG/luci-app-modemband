@@ -9,7 +9,7 @@
 'require tools.widgets as widgets';
 
 /*
-    Copyright 2022-2025 Rafał Wabik - IceG - From eko.one.pl forum
+    Copyright 2022-2026 Rafał Wabik - IceG - From eko.one.pl forum
 */
 
 function pop(a, message, severity) {
@@ -173,20 +173,57 @@ return view.extend({
     formdata: { modemband: {} },
     isModemSupported: true,
 
+    handleModemChange: function(ev) {
+        let sections = uci.sections('defmodems', 'defmodems');
+        if (!sections || sections.length === 0) return;
+        
+        let serialModems = sections.filter(function(s) {
+            return s.modemdata === 'serial';
+        });
+        
+        if (serialModems.length === 0) return;
+        
+        let currentPort = uci.get('modemband', '@modemband[0]', 'set_port');
+        let currentIndex = serialModems.findIndex(function(s) {
+            return s.comm_port === currentPort;
+        });
+        
+        if (currentIndex === -1) currentIndex = 0;
+        
+        let direction = ev.currentTarget.classList.contains('next') ? 1 : -1;
+        let newIndex = (currentIndex + direction + serialModems.length) % serialModems.length;
+        let newModem = serialModems[newIndex];
+        
+        if (newModem && newModem.comm_port) {
+            uci.set('modemband', '@modemband[0]', 'set_port', newModem.comm_port);
+            uci.save();
+            uci.apply().then(function() {
+                let modemText = document.querySelector('.modem-display-text');
+                if (modemText) {
+                    let label = newModem.modem + (newModem.user_desc ? ' (' + newModem.user_desc + ')' : '');
+                    modemText.textContent = label;
+                }
+                setTimeout(function() {
+                    location.reload();
+                }, 1000);
+            });
+        }
+    },
+
     addStyles: function () {
         const style = document.createElement('style');
         style.type = 'text/css';
         style.textContent = `
         :root {
-          --tile-on-bg: #34c759;              /* ON */
-          --tile-off-bg: #7f8c8d;             /* OFF */
+          --tile-on-bg: #34c759; /* ON */
+          --tile-off-bg: #7f8c8d; /* OFF */
           --tile-text: #ffffff;
           --tile-on-ring: #34c759;
           --tile-off-ring: #7f8c8d;
           --tile-shadow: 0 1px 2px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.25);
         }
         :root[data-darkmode="true"] {
-          --tile-on-bg: rgba(46, 204, 113, 0.22);   /* ON */
+          --tile-on-bg: rgba(46, 204, 113, 0.22); /* ON */
           --tile-off-bg: rgba(255, 255, 255, 0.08); /* OFF */
           --tile-text: #e5e7eb;
           --tile-on-ring: #2ecc71;
@@ -206,6 +243,22 @@ return view.extend({
           text-shadow: 0 1px 2px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.25);
           user-select: none;
         }
+
+        .ifacebox {
+          min-width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        .ifacebox-body {
+          flex: 1 !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .ifacebox-head port-label {
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+
         .band-tile.band-tile--on  { background-color: var(--tile-on-bg);  border-color: var(--tile-on-ring); }
         .band-tile.band-tile--off { background-color: var(--tile-off-bg); border-color: var(--tile-off-ring); }
         `;
@@ -213,7 +266,13 @@ return view.extend({
     },
 
     load: function() {
-        return L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json']));
+        return Promise.all([
+            L.resolveDefault(fs.exec_direct('/usr/bin/modemband.sh', ['json'])),
+            L.resolveDefault(uci.load('defmodems')),
+            uci.load('modemband')
+        ]).then(function(results) {
+            return results[0];
+        });
     },
 
     renderErrorMessage: function(title, message, forumUrl) {
@@ -291,6 +350,22 @@ return view.extend({
 
         m = new form.JSONMap(this.formdata, _('LTE Bands Configuration'), info);
 
+        let sections = uci.sections('defmodems', 'defmodems');
+        let serialModems = [];
+        
+        if (sections && sections.length > 0) {
+            serialModems = sections.filter(function(s) {
+                return s.modemdata === 'serial';
+            });
+        }
+        
+        let currentPort = uci.get('modemband', '@modemband[0]', 'set_port');
+        let currentModem = serialModems.find(function(s) {
+            return s.comm_port === currentPort;
+        });
+        
+        if (!currentModem && serialModems.length > 0) currentModem = serialModems[0];
+
         s = m.section(form.TypedSection, 'modemband', '', _(''));
         s.anonymous = true;
         s.render = L.bind(function(view, section_id) {
@@ -298,8 +373,8 @@ return view.extend({
             const TILE_H = 25;
             const RADIUS = 4;
 
-            let modemContainer = E('div', { 'class': 'ifacebox', 'style': 'margin:.25em;width:100%;text-align:center;' }, [
-                E('div', { 'id': 'modem-title', 'class': 'ifacebox-head', 'style': 'font-weight:bold;background:#f8f8f8;padding:8px' }, [
+            let modemContainer = E('div', { 'class': 'ifacebox', 'style': 'text-align:center;' }, [
+                E('div', { 'id': 'modem-title', 'class': 'ifacebox-head port-label', 'style': 'font-weight:bold;padding:8px' }, [
                     json.modem || '-'
                 ]),
             ]);
@@ -367,6 +442,43 @@ return view.extend({
             modemContainer.appendChild(blockWrap);
             return modemContainer;
         }, o, this);
+
+        if (serialModems.length > 0 && currentModem) {
+            let modemSelectSection = m.section(form.TypedSection, '_modem_selector', '');
+            modemSelectSection.anonymous = true;
+            modemSelectSection.addremove = false;
+            modemSelectSection.render = L.bind(function() {
+                let label = currentModem.modem + (currentModem.user_desc ? ' (' + currentModem.user_desc + ')' : '');
+                let buttonsDisabled = (serialModems.length > 1) ? null : true;
+                
+                return E('div', { 'class': 'cbi-section', 'style': 'margin-top:10px !important;' }, [
+                    E('div', { 'class': 'cbi-section-node' }, [
+                        E('div', { 'class': 'cbi-value' }, [
+                            E('label', { 'class': 'cbi-value-title' }, [ _('Select modem') ]),
+                            E('div', { 'class': 'cbi-value-field' }, [
+                                E('div', { 'class': 'pager center', 'style': 'display: flex; align-items: center; gap: 10px;' }, [
+                                    E('button', { 
+                                        'class': 'btn cbi-button-neutral prev', 
+                                        'aria-label': _('Previous modem'), 
+                                        'click': ui.createHandlerFn(this, 'handleModemChange'),
+                                        'style': 'min-width: 40px;',
+                                        'disabled': buttonsDisabled
+                                    }, [ ' ◄ ' ]),
+                                    E('div', { 'class': 'text modem-display-text', 'style': 'flex: 1; text-align: center;' }, [ label ]),
+                                    E('button', { 
+                                        'class': 'btn cbi-button-neutral next', 
+                                        'aria-label': _('Next modem'), 
+                                        'click': ui.createHandlerFn(this, 'handleModemChange'),
+                                        'style': 'min-width: 40px;',
+                                        'disabled': buttonsDisabled
+                                    }, [ ' ► ' ])
+                                ])
+                            ])
+                        ])
+                    ])
+                ]);
+            }, this);
+        }
 
         s = m.section(form.TypedSection, 'modemband', _(''));
         s.anonymous = true;
@@ -436,15 +548,32 @@ return view.extend({
                     fs.exec_direct('/usr/bin/modemband.sh', ['setbands', ax]);
                     popTimeout(null, E('p', _('The new bands settings have been sent to the modem. If the changes are not visible, a restart of the connection, modem or router may be required.')), 5000, 'info');
 
-                    return uci.load('modemband').then(function() {
+                    return Promise.all([
+                        uci.load('modemband'),
+                        uci.load('defmodems')
+                    ]).then(function() {
                         try {
-                            var wrestart = (uci.get('modemband', '@modemband[0]', 'wanrestart'));
-                            var mrestart = (uci.get('modemband', '@modemband[0]', 'modemrestart'));
-                            var cmdrestart = (uci.get('modemband', '@modemband[0]', 'restartcmd'));
-                            var wname = (uci.get('modemband', '@modemband[0]', 'iface'));
-                            var sport = (uci.get('modemband', '@modemband[0]', 'set_port'));
+                            let wrestart = (uci.get('modemband', '@modemband[0]', 'wanrestart'));
+                            let mrestart = (uci.get('modemband', '@modemband[0]', 'modemrestart'));
+                            let cmdrestart = (uci.get('modemband', '@modemband[0]', 'restartcmd'));
+                            let sport = (uci.get('modemband', '@modemband[0]', 'set_port'));
                             
-                            if (wrestart == '1') {
+                            // Pobierz network z defmodems dla danego comm_port
+                            let wname = null;
+                            let sections = uci.sections('defmodems', 'defmodems');
+                            for (let i = 0; i < sections.length; i++) {
+                                if (sections[i].comm_port === sport) {
+                                    wname = sections[i].network;
+                                    break;
+                                }
+                            }
+                            
+                            // Fallback do starego formatu jeśli nie znaleziono w defmodems
+                            if (!wname) {
+                                wname = (uci.get('modemband', '@modemband[0]', 'iface'));
+                            }
+                            
+                            if (wrestart == '1' && wname) {
                                 fs.exec('/sbin/ifdown', [ wname ]);
                                 fs.exec('sleep 3');
                                 fs.exec('/sbin/ifup', [ wname ]);

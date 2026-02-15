@@ -8,10 +8,11 @@
 				"/usr/bin/loaded.sh": [ "exec" ],
 				"/usr/bin/sms_tool": [ "exec" ],
 				"/etc/modemband": [ "read" ],
+				"/etc/defmodems": [ "read" ],
 				"/usr/share/modemband": [ "read" ],
 				"/usr/share/modemband/*": [ "read" ]
 			},
-			"uci": [ "modemband", "luci-app-modemband" ]
+			"uci": [ "modemband", "luci-app-modemband", "defmodems" ]
 		},
 		"write": {
 			"file": {

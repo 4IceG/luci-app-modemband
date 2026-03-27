@@ -50,6 +50,7 @@ Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A pr
 - Quectel RG502Q-EA
 - Quectel RM500Q-GL
 - Quectel RM500U-CNV
+- Quectel RM500Q-AE
 - Quectel RM502Q-AE
 - Quectel RM502Q-GL
 - Quectel RM505Q-AE

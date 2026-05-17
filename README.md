@@ -5,7 +5,13 @@
 ![GitHub forks](https://img.shields.io/github/forks/4IceG/luci-app-modemband?style=flat-square)
 ![GitHub All Releases](https://img.shields.io/github/downloads/4IceG/luci-app-modemband/total)
 
-Luci-app-modemband is a My GUI for https://eko.one.pl/?p=openwrt-modemband. A program to set LTE/5G bands for selected 4G/5G modems.
+A program to set LTE/5G bands for selected 4G/5G modems.
+
+> [!NOTE]
+> <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> 
+LuCI JS interface for [modemband](https://github.com/obsy/modemband) package.
+>
+> <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Interfejs LuCI JS dla pakietu [modemband](https://github.com/obsy/modemband).
 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> What You Should Know / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Co powinieneś wiedzieć
 > My package will not work if you are using ModemManager.   
